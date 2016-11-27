@@ -1,0 +1,115 @@
+$icon-font-path: '../fonts/';
+
+// bower:scss
+@import "bower_components/bootstrap-sass/assets/stylesheets/_bootstrap.scss";
+// endbower
+
+$numberColor: #e0a553;
+$booleanColor: #f9f962;
+$nullColor: #e86e6e;
+$pingTextColor: #eee;
+$stringColor: #8ada8a;
+
+$backgroundColor: #0f101f;
+$fontColor: #a4c2d8;
+
+.browserupgrade {
+  margin: 0.2em 0;
+  background: #ccc;
+  color: #000;
+  padding: 0.2em 0;
+}
+
+body {
+  padding-top: 10px;
+  background: $backgroundColor;
+  color: $fontColor;
+  font-family: 'Varela Round', sans-serif;
+}
+
+a {
+  color: $fontColor;
+  &:hover {
+  color: $fontColor;
+  text-decoration: none;
+  }
+}
+
+p {
+  font-size: 16px;
+}
+
+h1.logo {
+  color: lighten($backgroundColor, 20%);
+  margin-bottom: 20px;
+
+}
+
+.channel img {
+  width: 50px;
+  margin-right: 20px;
+}
+
+.channel-outer {
+  background: lighten($backgroundColor, 10%);
+  padding: 10px 25px 15px;
+  margin-bottom: 20px;
+  h1 {
+    margin-top: 10px;
+  }
+  p {
+    margin-bottom: 0;
+  }
+}
+
+.channel {
+  width: 450px;
+  float: left
+}
+
+.no-streams {
+  display: flex;
+  align-items: center;
+  width: 500px;
+  float: left;
+  margin-left: 20px;
+  color: lighten($backgroundColor, 22%);
+}
+
+.stream {
+  float: left;
+  width: 320px;
+  margin-left: 20px;
+  h2 {
+    margin-top: 5px;
+    font-size: 18px;
+    font-weight: normal;
+  }
+}
+
+/* Syntax Highlighting Color Scheme */
+
+span.json {
+  white-space: pre;
+  font-family: monospace;
+}
+
+pre {
+  outline: 1px solid #ccc; padding: 5px; margin: 5px;
+}
+
+.string {
+  color: $stringColor;
+}
+.number {
+  color: $numberColor;
+}
+.boolean {
+  color: $booleanColor;
+}
+.null {
+  color: $nullColor;
+}
+.key {
+  color: $fontColor;
+}
