@@ -26,7 +26,7 @@
     
     <div class="container-fluid" id="twitch">
       <h1 class="logo">Twitch Channels</h1>
-      <div class="channel-outer clearfix" v-for="obj in responseObjects" >
+      <div class="channel-outer clearfix" v-for="obj in responseObjects" v-if="obj.exists">
         <a v-bind:href="obj.channelResponse.url" v-bind:title="'Visit ' + obj.channelResponse.display_name + ' on Twitch'">
           <div class="channel">
             <h1><img v-bind:src="obj.channelResponse.logo">{{ obj.channelResponse.display_name }}</h1>
@@ -41,6 +41,7 @@
           </div> 
         </a>
       </div>
+      <p class="fails"><span class="notice">Notice:</span> {{ fails.text }}</p>
     </div>
 
     <!-- build:js scripts/vendor.js -->

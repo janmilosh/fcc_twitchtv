@@ -22,9 +22,14 @@ $fontColor: #a4c2d8;
 
 body {
   padding-top: 10px;
+  padding-bottom: 30px;
   background: $backgroundColor;
   color: $fontColor;
   font-family: 'Varela Round', sans-serif;
+}
+
+strong {
+  font-weight: bold;
 }
 
 a {
@@ -85,6 +90,15 @@ h1.logo {
     font-size: 18px;
     font-weight: normal;
   }
+}
+
+p.fails {
+  color: lighten($backgroundColor, 30%);
+  font-size: 26px;
+}
+
+p .notice {
+  color: lighten($backgroundColor, 40%);
 }
 
 /* Syntax Highlighting Color Scheme */

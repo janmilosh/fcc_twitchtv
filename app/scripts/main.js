@@ -1,7 +1,7 @@
 var twitch = {};
 
 twitch.url = 'https://api.twitch.tv/kraken/';
-twitch.channels = ['freecodecamp', 'ESL_SC2', 'OgamingSC2', 'tsm_dyrus', 'cretetion', 'storbeck', 'habathcx', 'RobotCaleb', 'noobs2ninjas'];
+twitch.channels = ['freecodecamp', 'ESL_SC2', 'OgamingSC2', 'tsm_dyrus', 'cretetion', 'storbeck', 'habathcx', 'RobotCaleb', 'noobs2ninjas', 'brunofin', 'comster404'];
 twitch.clientID = 'iohqmi5ujw62q74sx2iisqohg3vh6h7';
 twitch.accept = 'application/vnd.twitchtv.v3+json';
 twitch.createObjects = function(channels) {
@@ -14,12 +14,13 @@ twitch.createObjects = function(channels) {
       noStreamsDivHeight: ''
     }
   });
-}
+};
 
 var vm = new Vue({
   el: '#twitch',
   data: {
-    responseObjects: twitch.createObjects(twitch.channels)
+    responseObjects: twitch.createObjects(twitch.channels),
+    fails: { channels: [], text: '' }
   },
   created: function() {
     self = this;
@@ -39,6 +40,7 @@ var vm = new Vue({
         } else {
           console.log('Failed:', textStatus);
         }
+        self.updateFailText(responseObj.channel);
       });
 
       function makeStreamRequest() {
@@ -71,6 +73,17 @@ var vm = new Vue({
         }
       })
       return promise;
+    },
+    updateFailText: function(channel) {
+      var obj = this.fails;
+      obj.channels.push(channel);
+      if (obj.channels.length === 1) {
+        obj.text = obj.channels[0] + ' doesn\'t seem to currently have a Twitch account.'
+      } else if (obj.channels.length === 2) {
+        obj.text = obj.channels[0] + ' and ' + obj.channels[1] + ' don\'t seem to currently have Twitch accounts.'
+      } else if (obj.channels.length > 2) {
+        obj.text = obj.channels.slice(0, -1).join(', ') + ', and ' + obj.channels.slice(-1) + ' don\'t seem to currently have Twitch accounts.';
+      }
     },
     JSONHighlight: function(json) {
       if (typeof json != 'string') {
